@@ -64,10 +64,7 @@ async function run() {
 
             await page.waitForTimeout(5_000);
 
-            // now we should see the appointments
-            /*
-            <td class="  ui-datepicker-current-day" data-handler="selectDay" data-event="click" data-month="5" data-year="2023"><a class="ui-state-default ui-state-active" href="#">29</a></td>
-             */
+            // dates in YYYY-M-D format (no 0 padding for numbers < 10)
             const dates = await Promise.all((await page.$$('td[data-handler]')).map(async x => {
                 const year = parseInt(await x.getAttribute('data-year'));
                 const month = parseInt((await x.getAttribute('data-month'))) + 1;
@@ -107,7 +104,7 @@ async function run() {
 
             console.log((new Date().toLocaleTimeString()) + " Available dates: " + dates.join(", "));
 
-            if (dates.map(date => date.split('-')).filter(date => date[1] === '7').length > 0) {
+            if (dates.find(isGoodDate)) {
                 console.log('FOUND GOOD DATES!!', dates);
                 player.play('alarm.wav');
                 await page.pause();
@@ -117,6 +114,14 @@ async function run() {
             }
         } while (true);
     });
+}
+
+// date = YYYY-M-D
+function isGoodDate(date) {
+    const parts = date.split("-");
+    const month = parseInt(parts[1]);
+    const day = parseInt(parts[2]);
+    return (month === 7 && day >= 15) || (month === 8 && day < 14);
 }
 
 function mainLoop() {
