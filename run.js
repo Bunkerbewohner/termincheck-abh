@@ -63,6 +63,7 @@ async function run() {
             await nextButton.click();
 
             await page.waitForTimeout(5_000);
+            await page.locator('td.ui-datepicker-current-day').waitFor({state: 'visible'});
 
             // dates in YYYY-M-D format (no 0 padding for numbers < 10)
             const dates = await Promise.all((await page.$$('td[data-handler]')).map(async x => {
