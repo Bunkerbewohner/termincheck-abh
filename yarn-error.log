@@ -1,5 +1,5 @@
 Arguments: 
-  /Users/mathias/.nvm/versions/node/v18.15.0/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js start
+  /Users/mathias/.nvm/versions/node/v18.15.0/bin/node /opt/homebrew/Cellar/yarn/1.22.19/libexec/bin/yarn.js run run
 
 PATH: 
   /Users/mathias/.bun/bin:/Users/mathias/.local/bin:/Users/mathias/.pyenv/shims:/Users/mathias/.nvm/versions/node/v18.15.0/bin:/opt/homebrew/opt/mongodb-community@5.0/bin:/opt/homebrew/opt/mongodb-community@4.4/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/usr/local/bin:/System/Cryptexes/App/usr/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:~/.dotnet/tools:/Library/Apple/usr/bin:/Users/mathias/Code/flutter/bin:/Users/mathias/Library/Application Support/JetBrains/Toolbox/scripts
@@ -14,7 +14,7 @@ Platform:
   darwin arm64
 
 Trace: 
-  SyntaxError: /Users/mathias/Code/termincheck/package.json: Unexpected token } in JSON at position 204
+  SyntaxError: /Users/mathias/Code/termincheck/package.json: Unexpected token } in JSON at position 230
       at JSON.parse (<anonymous>)
       at /opt/homebrew/Cellar/yarn/1.22.19/libexec/lib/cli.js:1629:59
       at Generator.next (<anonymous>)
@@ -32,8 +32,10 @@ npm manifest:
     },
     "scripts": {
       "test": "playwright test --ui",
+      "run": "node run.js",
     },
     "dependencies": {
+      "play-sound": "^1.1.5",
       "playwright-extra": "^4.3.6",
       "puppeteer-extra-plugin-stealth": "^2.11.2"
     }
@@ -119,6 +121,11 @@ Lockfile:
     version "4.3.1"
     resolved "https://registry.yarnpkg.com/deepmerge/-/deepmerge-4.3.1.tgz#44b5f2147cd3b00d4b56137685966f26fd25dd4a"
     integrity sha512-3sUqbMEc77XqpdNO7FRyRog+eW3ph+GYCbj+rK+uYyRMuwsVy0rMiVtPn+QJlKFvWP/1PYpapqYn0Me2knFn+A==
+  
+  find-exec@1.0.2:
+    version "1.0.2"
+    resolved "https://registry.yarnpkg.com/find-exec/-/find-exec-1.0.2.tgz#dd90e77ef50ab380bdb2f6cc508a386606f3d3bd"
+    integrity sha512-/cs763F5i7Nm/aG+hjBv2nJB/Bl2w0tnuZd5bbfcV+WYapn8T4ez3B87H6MgvsmdheDkitj/rHi557wvE+XylQ==
   
   for-in@^0.1.3:
     version "0.1.8"
@@ -281,6 +288,13 @@ Lockfile:
     version "1.0.1"
     resolved "https://registry.yarnpkg.com/path-is-absolute/-/path-is-absolute-1.0.1.tgz#174b9268735534ffbc7ace6bf53a5a9e1b5c5f5f"
     integrity sha512-AVbw3UJ2e9bq64vSaS9Am0fje1Pa8pbGqTTsmXfaIiMpnr5DlDhfJOuLj9Sf95ZPVDAUerDfEk88MPmPe7UCQg==
+  
+  play-sound@^1.1.5:
+    version "1.1.5"
+    resolved "https://registry.yarnpkg.com/play-sound/-/play-sound-1.1.5.tgz#5b44aa0ed59e2ec2f80710210ed783c79b6fb854"
+    integrity sha512-gbdF1iLNyL5r9Ne9YwARGMkrvfR4EL9G1ZLtFPLkI2tQt0kkHw5CHM5E6Gl/lDuuk/Uj/O5Q29Bi08jMK4egbA==
+    dependencies:
+      find-exec "1.0.2"
   
   playwright-core@1.35.1:
     version "1.35.1"
