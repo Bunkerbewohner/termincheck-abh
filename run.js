@@ -105,7 +105,7 @@ async function run() {
                 console.log("FAILED TO DETERMINE CURRENT DAY", ex);
             }
 
-            console.log((new Date().toLocaleTimeString()) + " Available dates", dates);
+            console.log((new Date().toLocaleTimeString()) + " Available dates: " + dates.join(", "));
 
             if (dates.map(date => date.split('-')).filter(date => date[1] === '7').length > 0) {
                 console.log('FOUND GOOD DATES!!', dates);
