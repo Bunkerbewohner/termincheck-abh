@@ -99,7 +99,8 @@ async function run(headless, loop) {
                     if (!selectedMonth) {
                         console.log(`'${selectedMonthGermanName}' is not a valid month name (table title: ${tableTitle})`);
                     }
-                    const currentDate = `2023-${selectedMonth}-${selectedDay}`;
+                    const currentYear = (new Date()).getFullYear();
+                    const currentDate = `${currentYear}-${selectedMonth}-${selectedDay}`;
                     if (dates.indexOf(currentDate) < 0) {
                         dates.push(currentDate);
                     }
@@ -122,10 +123,8 @@ async function run(headless, loop) {
                     await page.waitForTimeout(60 * 1000 * (3 + Math.random() * 3));
                 }
             } while (loop);
-
-            console.log("closing browser...");
-            await browser.close();
         } finally {
+            console.log("closing browser...");
             await browser.close();
         }
     });
