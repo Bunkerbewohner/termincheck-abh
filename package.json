@@ -3,14 +3,11 @@
   "version": "1.0.0",
   "main": "run.js",
   "license": "MIT",
-  "devDependencies": {
-    "@playwright/test": "^1.35.1"
-  },
   "scripts": {
-    "test": "playwright test --ui",
-    "run": "node run.js"
+    "start": "node run.js"
   },
   "dependencies": {
+    "@playwright/test": "^1.35.1",
     "play-sound": "^1.1.5",
     "playwright-extra": "^4.3.6",
     "puppeteer-extra-plugin-stealth": "^2.11.2"

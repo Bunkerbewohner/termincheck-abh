@@ -112,6 +112,10 @@ async function run(headless, loop) {
                 if (dates.find(isGoodDate)) {
                     console.log('FOUND GOOD DATES!!', dates);
                     player.play('alarm.wav');
+
+                    // give us some time to book the appointment manually
+                    await page.waitForTimeout(60 * 1000 * 30); // appointment is available for 30 min
+
                     await page.pause();
                 } else {
                     // try again in 3 to 6 minutes
